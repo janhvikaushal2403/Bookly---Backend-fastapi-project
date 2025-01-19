@@ -1,4 +1,4 @@
-# 📚 Bookly - Backend FastAPI Services
+# 📚 Bookly - Backend FastAPI Book Services
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-brightgreen)](https://fastapi.tiangolo.com/)
