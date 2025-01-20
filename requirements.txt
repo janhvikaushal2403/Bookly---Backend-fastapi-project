@@ -24,7 +24,7 @@ colorama==0.4.6
 cryptography==41.0.2
 dnspython==2.4.0
 ecdsa==0.18.0
-email-validator==2.0.0.post2
+email-validator
 fastapi==0.100.0
 fastapi-cli==0.0.7
 fastapi-mail==1.4.2
