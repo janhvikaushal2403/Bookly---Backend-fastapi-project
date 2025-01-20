@@ -32,7 +32,7 @@ from src.db.redis import add_jti_to_blocklist
 from src.errors import UserAlreadyExists, UserNotFound, InvalidCredentials, InvalidToken
 from src.mail import mail, create_message
 from src.config import Config
-from src.celery_tasks import send_email
+# from src.celery_tasks import send_email
 
 auth_router = APIRouter()
 user_service = UserService()
@@ -47,13 +47,13 @@ async def send_mail(emails: EmailModel):
 
     subject = "Welcome"
     # using celery tasks
-    send_email.delay(emails, subject, html)
-    # message = create_message(
-    #     recipients = emails,
-    #     subject="Welcome",
-    #     body = html
-    # )
-    # await mail.send_message(message)
+    # send_email.delay(emails, subject, html)
+    message = create_message(
+        recipients = emails,
+        subject="Welcome",
+        body = html
+    )
+    await mail.send_message(message)
     return {"message" : "Email sent successfully"}
 
 
@@ -82,16 +82,16 @@ async def create_user_acccounts(user_data: UserCreateModel,bg_tasks : Background
     """
     emails = [email]
     subject = "Verify your email"
-    # message = create_message(
-    #     recipients = [email],
-    #     subject="Verify you email",
-    #     body = html_message
-    # )
-    # # instead of await we can directly use background tasks as -
-    # # await mail.send_message(message)
+    message = create_message(
+        recipients = [email],
+        subject="Verify you email",
+        body = html_message
+    )
+    # instead of await we can directly use background tasks as -
+    # await mail.send_message(message)
     # bg_tasks.add_task(mail.send_message, message)
 
-    send_email.delay(emails, subject, html_message)
+    # send_email.delay(emails, subject, html_message)
     return{
         "message" : "Account Created! check you email to verify you account",
         "user": new_user
