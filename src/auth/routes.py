@@ -88,7 +88,7 @@ async def create_user_acccounts(user_data: UserCreateModel,bg_tasks : Background
         body = html_message
     )
     # instead of await we can directly use background tasks as -
-    # await mail.send_message(message)
+    await mail.send_message(message)
     # bg_tasks.add_task(mail.send_message, message)
 
     # send_email.delay(emails, subject, html_message)
